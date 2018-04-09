@@ -1,0 +1,13 @@
+minishift addons install <path_to_addon>
+minishift addons install add-ons/prometheus/
+minishift addons install add-ons/admin-role/
+minishift addons install add-ons/asb/
+minishift docker-env
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/ion/.minishift/profiles/local-cluster/certs"
+# Run this command to configure your shell:
+# eval $(minishift docker-env)
+oc adm policy add-cluster-role-to-user cluster-admin developer
+oc process -f openshift-permissions.template.yaml -p BROKER_NAMESPACE=openshift-ansible-service-broker [-p USER=<your_desired_user>] | oc create -f -
+oc process -f openshift-permissions.template.yaml -p BROKER_NAMESPACE=openshift-ansible-service-broker -p USER=developer | oc create -f -

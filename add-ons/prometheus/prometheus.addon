@@ -1,0 +1,7 @@
+# Name: prometheus
+# Description: This template creates a Prometheus instance preconfigured to gather OpenShift and
+# Kubernetes platform and node metrics and report them to admins. It is protected by an
+# OAuth proxy that only allows access for users who have view access to the prometheus
+# namespace. You may customize where the images (built from openshift/prometheus
+# and openshift/oauth-proxy) are pulled from via template parameters.
+# Url: https://prometheus.io/
